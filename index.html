@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Nanti cukup ganti:
+logo.png
+hero-phone.png
+screen1.png
+screen2.png
+screen3.png
+maskot.png -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Couple Alarm - Wake Up Together</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f8f9ff;
+            color: #111;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1300px;
+            margin: auto;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .logo img {
+            width: 40px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #222;
+            font-weight: 500;
+        }
+
+        .btn {
+            background: #ff5ea8;
+            color: white;
+            padding: 14px 28px;
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: 600;
+            transition: .3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+        }
+
+        .hero-left {
+            flex: 1;
+        }
+
+        .hero-left h1 {
+            font-size: 70px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .gradient {
+            background: linear-gradient(90deg, #ff5ea8, #ff8a5c);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero-left p {
+            color: #666;
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 35px;
+            max-width: 600px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .secondary {
+            background: white;
+            color: #111;
+            border: 1px solid #ddd;
+        }
+
+        .hero-right {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .phone-wrapper {
+            position: relative;
+        }
+
+        .phone-bg {
+            width: 450px;
+            height: 450px;
+            background: linear-gradient(135deg, #ff5ea8, #ff8a5c);
+            border-radius: 60px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            filter: blur(30px);
+            opacity: .3;
+        }
+
+        .phone {
+            position: relative;
+            width: 320px;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .phone img {
+            width: 100%;
+            border-radius: 30px;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* BRANDS */
+
+        .brands {
+            padding: 40px 0 80px;
+        }
+
+        .brand-row {
+            display: flex;
+            justify-content: center;
+            gap: 70px;
+            flex-wrap: wrap;
+            color: #999;
+            font-weight: 600;
+        }
+
+        /* FEATURES */
+
+        .features-section {
+            background: #111;
+            border-radius: 40px;
+            color: white;
+            padding: 90px 50px;
+        }
+
+        .features-title {
+            text-align: center;
+            font-size: 50px;
+            margin-bottom: 60px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: white;
+            color: #111;
+            border-radius: 30px;
+            padding: 30px;
+            transition: .3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .feature-card h3 {
+            margin-bottom: 15px;
+        }
+
+        /* HOW IT WORKS */
+
+        .how {
+            padding: 120px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 50px;
+            margin-bottom: 70px;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .step {
+            text-align: center;
+        }
+
+        .number {
+            width: 70px;
+            height: 70px;
+            margin: auto;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff5ea8, #ff8a5c);
+            color: white;
+            font-size: 28px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        /* SCREENSHOTS */
+
+        .screenshots {
+            padding: 100px 0;
+        }
+
+        .slider {
+            display: flex;
+            gap: 30px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding-bottom: 20px;
+        }
+
+        .slider::-webkit-scrollbar {
+            display: none;
+        }
+
+        .shot {
+            min-width: 280px;
+        }
+
+        .shot img {
+            width: 100%;
+            border-radius: 30px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, .15);
+        }
+
+        /* APP STORE */
+
+        .store {
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .store h2 {
+            font-size: 50px;
+            margin-bottom: 40px;
+        }
+
+        .store img {
+            max-width: 450px;
+            width: 100%;
+        }
+
+        /* CTA */
+
+        .cta {
+            background: linear-gradient(135deg, #ff5ea8, #ff8a5c);
+            color: white;
+            text-align: center;
+            padding: 100px 30px;
+            border-radius: 40px;
+            margin-bottom: 100px;
+        }
+
+        .cta h2 {
+            font-size: 55px;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            max-width: 700px;
+            margin: auto;
+            margin-bottom: 35px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            padding: 60px 0;
+        }
+
+        .footer-grid {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 50px;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: #555;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        /* MOBILE */
+
+        @media(max-width:900px) {
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-left h1 {
+                font-size: 45px;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .steps {
+                grid-template-columns: 1fr;
+            }
+
+            .features-title,
+            .section-title,
+            .store h2,
+            .cta h2 {
+                font-size: 35px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <nav>
+            <div class="logo">
+                <img src="logo.png">
+                Couple Alarm
+            </div>
+
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#how-works">How It Works</a>
+                <a href="#support">Support</a>
+            </div>
+
+            <a class="btn" href="#">Download</a>
+        </nav>
+
+        <section class="hero">
+
+            <div class="hero-left">
+                <h1>
+                    Wake Up Together.
+                    <span class="gradient">
+                        Stay Closer Every Day.
+                    </span>
+                </h1>
+
+                <p>
+                    Couple Alarm transforms ordinary alarms into meaningful moments.
+                    Create shared alarms, complete wake-up challenges, exchange
+                    romantic messages, and build relationship streaks together.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#" class="btn">Download App</a>
+                    <a href="#" class="btn secondary">Learn More</a>
+                </div>
+            </div>
+
+            <div class="hero-right">
+
+                <div class="phone-wrapper">
+                    <div class="phone-bg"></div>
+
+                    <div class="phone">
+                        <img src="hero-phone.png">
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <div id="features" class="brands">
+            <div class="brand-row">
+                <span>Shared Alarms</span>
+                <span>Wake-Up Challenges</span>
+                <span>Daily Romance</span>
+                <span>Voice Responses</span>
+                <span>Couple Streaks</span>
+            </div>
+        </div>
+
+        <section class="features-section">
+
+            <h2 class="features-title">
+                Make Relationships More Fun ❤️
+            </h2>
+
+            <div class="features-grid">
+
+                <div class="feature-card">
+                    <h3>🔔 Shared Alarms</h3>
+                    <p>Create alarms together and never oversleep again.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>📸 Wake-Up Challenges</h3>
+                    <p>Send selfies and proof photos after your alarm rings.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>🎤 Voice Responses</h3>
+                    <p>Respond with voice recordings and stay connected.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>💕 Romantic Messages</h3>
+                    <p>Receive sweet words and daily relationship moments.</p>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section id="how-works" class="how">
+
+            <h2 class="section-title">
+                How It Works
+            </h2>
+
+            <div class="steps">
+
+                <div class="step">
+                    <div class="number">1</div>
+                    <h3>Connect</h3>
+                    <p>Invite your partner.</p>
+                </div>
+
+                <div class="step">
+                    <div class="number">2</div>
+                    <h3>Create Alarm</h3>
+                    <p>Set shared alarms together.</p>
+                </div>
+
+                <div class="step">
+                    <div class="number">3</div>
+                    <h3>Complete Challenge</h3>
+                    <p>Send proof when alarm rings.</p>
+                </div>
+
+                <div class="step">
+                    <div class="number">4</div>
+                    <h3>Love Counter</h3>
+                    <p>Track your days together.</p>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="screenshots">
+
+            <h2 class="section-title">
+                App Screenshots
+            </h2>
+
+            <div class="slider">
+
+                <div class="shot">
+                    <img src="screen1.png">
+                </div>
+
+                <div class="shot">
+                    <img src="screen2.png">
+                </div>
+
+                <div class="shot">
+                    <img src="screen3.png">
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="store">
+
+            <h2>
+                Now Available on the App Store
+            </h2>
+
+            <img src="logo.png">
+
+        </section>
+
+        <section id="support" class="cta">
+
+            <h2>
+                Start Building Better Mornings Together
+            </h2>
+
+            <p>
+                Join thousands of couples creating healthier habits,
+                stronger connections, and more memorable mornings.
+            </p>
+
+            <a href="#" class="btn">
+                Download Now!
+            </a>
+
+        </section>
+
+        <footer>
+
+            <div class="footer-grid">
+
+                <div>
+                    <h3>Couple Alarm</h3>
+                    <p>Making relationships more fun, one alarm at a time.</p>
+                </div>
+
+                <div class="footer-links">
+
+                    <div>
+                        <h4>Legal</h4>
+                        <a href="https://marsh-parrot-527.notion.site/Privacy-Policy-3803a79c0f8d80a8a78bf868a2ccc982" target="_blank">Privacy Policy</a>
+                        <a href="https://marsh-parrot-527.notion.site/Terms-and-Conditions-3803a79c0f8d804d803ff6c7d9b6c685" target="_blank">Terms & Conditions</a>
+                    </div>
+
+                    <div>
+                        <h4>Support</h4>
+                        <a href="mailto:ardyansyahancalox@gmail.com">Contact</a>
+                        <a href="mailto:ardyansyahancalox@gmail.com">Help Center</a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </footer>
+
+    </div>
+
+    <script>
+
+        window.addEventListener("scroll", () => {
+
+            document.querySelectorAll(".feature-card").forEach(card => {
+
+                const top = card.getBoundingClientRect().top;
+
+                if (top < window.innerHeight - 100) {
+                    card.style.opacity = 1;
+                    card.style.transform = "translateY(0)";
+                }
+
+            });
+
+        });
+
+        document.querySelectorAll(".feature-card").forEach(card => {
+            card.style.opacity = 0;
+            card.style.transform = "translateY(30px)";
+            card.style.transition = ".5s";
+        });
+
+    </script>
+
+</body>
+
+</html>
